@@ -1,0 +1,19 @@
+{{ if .Limited }}
+<div class="bg-yellow-400 rounded-lg text-black font-bold p-4 m-1 text-center sticky top-0 z-50 w-full">
+    Limited Results!
+</div>
+{{ end }}
+{{ range .Items }}
+<div class="px-1">
+    <a class="bg-gray-700 m-1 rounded-lg p-2 flex items-center space-x-2" href="/i/{{.Name}}">
+        <span class="text-2xl">{{.Emoji}}</span>
+        <span class="font-semibold text-lg">{{.Name}}</span>
+    </a>
+</div>
+{{ else }}
+<div class="px-1 w-full">
+    <div class="bg-gray-700 m-1 rounded-lg p-2 text-center shadow-inner">
+        No items found.
+    </div>
+</div>
+{{ end }}

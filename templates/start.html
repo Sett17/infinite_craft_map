@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org"></script>
+    <style>
+        body { background-color: #1a202c; color: #cbd5e0; }
+        .search-container input { background-color: #2d3748; border-color: #4a5568; color: #cbd5e0; }
+        .search-container input::placeholder { color: #a0aec0; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4">
+        <div class="mt-10 search-container">
+            <div class="text-right mb-5">
+                Total Items: <span id="totalItems">{{.TotalItems}}</span>
+            </div>
+            <input type="search" name="item" id="searchBar" hx-post="/search" hx-target="#itemInfo" hx-trigger="input changed delay:100ms, search" placeholder="Search items..." class="shadow appearance-none rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+            <div id="itemInfo" class="mt-5 flex flex-wrap justify-evenly -mx-2">
+                {{ .MaybeItem }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
